@@ -7,4 +7,4 @@ class Player:
         position =  int(input("What position would you like to play? "))
         while self.board[position] != None:
             position = int(input("What position would you like to play? "))
-        
+
