@@ -7,9 +7,18 @@ class Board():
 
     def visualize(self):
 
-        return
+        board = self.board
+        for i in range(len(board)):
+            if board[i] is not None:
+                board[i] = " "
+        print(str(board[0]) + "|" + str(board[1]) + "|" + str(board[2]))
+        print("-----")
+        print(str(board[3]) + "|" + str(board[4]) + "|" + str(board[5]))
+        print("-----")
+        print(str(board[6]) + "|" + str(board[7]) + "|" + str(board[8]))
 
-    def position_visuaize(self):
+
+    def position_visualize(self):
 
         updated = [None] * 9
         for i in range(9):
@@ -19,6 +28,6 @@ class Board():
                 updated[i] = i
 
 
-
-
+test = Board()
+test.visualize()
 
