@@ -1,8 +1,19 @@
 class Board():
     def __init__(self):
-        board = [None] * 9
+        self.board = [None] * 9
 
     def visualize(self):
-        return
+        board = self.board
+        for i in range(len(board)):
+            if board[i] == None:
+                board[i] = " "
+        print(str(board[0]) + "|" + str(board[1]) + "|" + str(board[2]))
+        print("-----")
+        print(str(board[3]) + "|" + str(board[4]) + "|" + str(board[5]))
+        print("-----")
+        print(str(board[6]) + "|" + str(board[7]) + "|" + str(board[8]))
     def position_visuaize(self):
         return
+
+test = Board()
+test.visualize()
