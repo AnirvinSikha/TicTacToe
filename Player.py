@@ -1,7 +1,5 @@
 class Player:
 
-
-
     def __init__(self, b, v):
         self.board = b
         self.val = v

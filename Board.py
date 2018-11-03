@@ -21,9 +21,19 @@ class Board():
                 updated[i] = self.board[i]
             else:
                 updated[i] = i
+        board = updated
+        print(str(board[0]) + "|" + str(board[1]) + "|" + str(board[2]))
+        print("-----")
+        print(str(board[3]) + "|" + str(board[4]) + "|" + str(board[5]))
+        print("-----")
+        print(str(board[6]) + "|" + str(board[7]) + "|" + str(board[8]))
 
+    def test(self):
+        test = Board()
+        test.visualize()
+        test.position_visualize()
 
-test = Board()
-test.visualize()
-test.position_visualize()
+b = Board()
+b.test()
+
 
