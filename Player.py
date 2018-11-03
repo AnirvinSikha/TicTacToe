@@ -1,3 +1,5 @@
+import Board.py
+
 class Player:
 
     def __init__(self, b, v):
@@ -12,3 +14,4 @@ class Player:
 
 
 
+b = Board()

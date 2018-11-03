@@ -1,3 +1,6 @@
+import Board.py
+
+
 class Game:
 
     def __init__(self, p1, p2, b):
@@ -32,3 +35,7 @@ class Game:
             if i is None:
                 count += 1
         return not self.lose(self.turn) and not self.win(self.turn) and (count == 9)
+
+
+
+b = Board()
