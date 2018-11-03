@@ -36,6 +36,12 @@ class Game:
                 count += 1
         return not self.lose(self.turn) and not self.win(self.turn) and (count == 9)
 
+    def finished(self):
+        return self.win(self.p1) or self.win(self.p2) or self.tie()
+
+    def getSuccessors(self):
+
+
 
 def main():
     b = Board()

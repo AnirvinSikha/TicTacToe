@@ -1,4 +1,6 @@
 import Board
+
+
 class Player:
 
     def __init__(self, b, v):
