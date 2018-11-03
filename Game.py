@@ -1,5 +1,6 @@
 from Board import Board
 from Player import Player
+from Node import Node
 
 class Game:
     def __init__(self, p1, p2, b):
@@ -40,7 +41,17 @@ class Game:
         return self.win(self.p1) or self.win(self.p2) or self.tie()
 
     def getSuccessors(self):
-        return
+        current = self.p1
+        opponent = self.p2
+        if self.turn is self.p2:
+            current = self.p2
+            opponent = self.p1
+        successors = []
+        for i in range(len(self.grid)):
+            if i is None:
+                n = Node(i, self.grid, current.val, opponent.val)
+                successors.append(n)
+        return successors
 
 def oneVone():
     b = Board()
