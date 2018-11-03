@@ -39,7 +39,7 @@ class Game:
     def finished(self):
         return self.win(self.p1) or self.win(self.p2) or self.tie()
 
-def main():
+def 1v1():
     b = Board()
     p1 = Player(b, 'x')
     p2 = Player(b, 'o')
@@ -54,4 +54,4 @@ def main():
         print("Plyaer 2 is the winner!")
     if g.tie():
         print("It's a tie!")
-main()
+#1v1()
