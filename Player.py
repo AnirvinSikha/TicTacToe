@@ -1,4 +1,6 @@
 import Board
+
+
 class Player:
 
     def __init__(self, b, v):
@@ -23,5 +25,3 @@ def main():
     b = Board.Board()
     p1 = Player(b, 'x')
     p2 = Player(b, 'o')
-
-

@@ -39,7 +39,10 @@ class Game:
     def finished(self):
         return self.win(self.p1) or self.win(self.p2) or self.tie()
 
-def 1v1():
+    def getSuccessors(self):
+        return
+
+def oneVone():
     b = Board()
     p1 = Player(b, 'x')
     p2 = Player(b, 'o')
@@ -54,4 +57,3 @@ def 1v1():
         print("Plyaer 2 is the winner!")
     if g.tie():
         print("It's a tie!")
-#1v1()

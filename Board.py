@@ -35,10 +35,3 @@ class Board:
         test = Board()
         test.visualize()
         test.position_visualize()
-
-# b = Board()
-# b.test()
-
-
-
-
