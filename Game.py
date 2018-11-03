@@ -31,18 +31,27 @@ class Game:
 
     def tie(self):
         count = 0
-        for i in self.b:
+        for i in self.grid:
             if i is None:
                 count += 1
-        return not self.lose(self.turn) and not self.win(self.turn) and (count == 9)
+        return not self.lose(self.turn) and not self.win(self.turn) and (count == 0)
 
+    def finished(self):
+        return self.win(self.p1) or self.win(self.p2) or self.tie()
 
 def main():
     b = Board()
     p1 = Player(b, 'x')
     p2 = Player(b, 'o')
     g = Game(p1, p2, b)
-    while not g.win(p1) or g.win(p2) or g.tie():
+    while not g.finished():
         p1.play()
-        p2.play()
+        if not g.finished():
+            p2.play()
+    if g.win(p1):
+        print("Player 1 is the winner!")
+    if g.win(p2):
+        print("Plyaer 2 is the winner!")
+    if g.tie():
+        print("It's a tie!")
 main()
