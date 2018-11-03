@@ -4,7 +4,6 @@ class Board():
         self.board = [None] * 9
 
     def visualize(self):
-
         board = self.board
         for i in range(len(board)):
             if board[i] is None:
@@ -36,5 +35,7 @@ class Board():
 
 b = Board()
 b.test()
+
+
 
 
