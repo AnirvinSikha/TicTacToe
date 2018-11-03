@@ -7,13 +7,6 @@ class Node:
         self.oppVal = oppVal
 
 
-
-
-
-
-
-
-
     # Heuristic
     def getUtility(self):
 

@@ -65,6 +65,6 @@ def oneVone():
     if g.win(p1):
         print("Player 1 is the winner!")
     if g.win(p2):
-        print("Plyaer 2 is the winner!")
+        print("Player 2 is the winner!")
     if g.tie():
         print("It's a tie!")
