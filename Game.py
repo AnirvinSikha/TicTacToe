@@ -44,7 +44,5 @@ def main():
     g = Game(p1, p2, b)
     while not g.win(p1) or g.win(p2) or g.tie():
         p1.play()
-        b.visualize()
         p2.play()
-        b.visualize()
 main()

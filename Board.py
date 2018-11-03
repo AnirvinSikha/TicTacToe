@@ -13,6 +13,9 @@ class Board:
         print(str(board[3]) + "|" + str(board[4]) + "|" + str(board[5]))
         print("-----")
         print(str(board[6]) + "|" + str(board[7]) + "|" + str(board[8]))
+        for i in range(len(board)):
+            if board[i] is " ":
+                board[i] = None
 
     def position_visualize(self):
         updated = [None] * 9
