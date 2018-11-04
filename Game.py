@@ -40,18 +40,35 @@ class Game:
     def finished(self):
         return self.win(self.p1) or self.win(self.p2) or self.tie()
 
-    def getSuccessors(self):
+    def getSuccessors(self, state):
+
         current = self.p1
         opponent = self.p2
-        if self.turn is self.p2:
+        if self.turn.val is state.val:
             current = self.p2
             opponent = self.p1
         successors = []
-        for i in range(len(self.grid)):
-            if i is None:
-                n = Node(i, self.grid, current.val, opponent.val)
+        for i in range(len(state.grid)):
+            if state.grid[i] is None:
+                n = Node(i, state.grid, current.val, opponent.val)
                 successors.append(n)
         return successors
+
+    def max_value(self, state):
+        v = float('-inf')
+        for node in self.getSuccessors(state):
+            v = max(v, self.value(state))
+        return v
+
+    def value(self, state):
+        if state.is_terminal():
+            return state.get_utility()
+        return self.max_value(state)
+
+
+
+
+
 
 def oneVone():
     b = Board()

@@ -32,3 +32,6 @@ class Node:
                 or b[0] == b[3] == b[6] == self.val \
                 or b[1] == b[4] == b[7] == self.val \
                 or b[2] == b[5] == b[8] == self.val)
+
+    def is_terminal(self):
+        return self.is_win(self.val) or self.is_win(self.oppVal) or self.grid.count(None) == 0
