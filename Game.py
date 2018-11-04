@@ -2,6 +2,7 @@ from Board import Board
 from Player import Player
 from Node import Node
 
+
 class Game:
     def __init__(self, p1, p2, b):
         self.p1 = p1
@@ -40,17 +41,17 @@ class Game:
     def finished(self):
         return self.win(self.p1) or self.win(self.p2) or self.tie()
 
-    def getSuccessors(self, state):
+    def getSuccessors(self):
 
         current = self.p1
         opponent = self.p2
-        if self.turn.val is state.val:
+        if self.turn is self.p2:
             current = self.p2
             opponent = self.p1
         successors = []
-        for i in range(len(state.grid)):
-            if state.grid[i] is None:
-                n = Node(i, state.grid, current.val, opponent.val)
+        for i in range(len(self.grid)):
+            if self.grid[i] is None:
+                n = Node(i, self.grid, current.val, opponent.val)
                 successors.append(n)
         return successors
 
@@ -66,18 +67,16 @@ class Game:
         return self.max_value(state)
 
 
-
-
-
-
 def oneVone():
     b = Board()
     p1 = Player(b, 'x')
     p2 = Player(b, 'o')
     g = Game(p1, p2, b)
     while not g.finished():
+        g.turn = p1
         p1.play()
         if not g.finished():
+            g.turn = p2
             p2.play()
     if g.win(p1):
         print("Player 1 is the winner!")
@@ -85,3 +84,24 @@ def oneVone():
         print("Player 2 is the winner!")
     if g.tie():
         print("It's a tie!")
+
+def aiVone():
+    b = Board()
+    p1 = Player(b, 'x')
+    p2 = Player(b, 'o')
+    g = Game(p1, p2, b)
+    while not g.finished():
+        g.turn = p1
+        p1.AIplay(g.getSuccessors())
+        if not g.finished():
+            g.turn = p2
+            p2.play()
+
+    if g.win(p1):
+        print("Player 1 is the winner!")
+    if g.win(p2):
+        print("Player 2 is the winner!")
+    if g.tie():
+        print("It's a tie!")
+    g.board.visualize()
+aiVone()

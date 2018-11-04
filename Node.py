@@ -6,20 +6,24 @@ class Node:
         self.val = val
         self.oppVal = oppVal
 
-    def get_utility(self):
+    def get_position(self):
+        return self.position
 
+    def get_utility(self):
         util = 0
 
         test_grid = self.grid.copy()
         test_grid[self.position] = self.val
-        if self.is_win(test_grid):
-            return float('inf')
+        if self.is_win(test_grid, self.val):
+            util = float('inf')
+            return util
 
-        num_val = self.grid.count(self.val)
-        opp_val = self.grid.count(self.oppVal)
-
-        util += 10 * num_val + 5 * opp_val
-
+        neighbors = self.get_neighbors()
+        for i in neighbors:
+            if self.grid[i] == self.val:
+                util += 10
+            elif self.grid[i] == self.oppVal:
+                util += 5
         return util
 
     def is_win(self, grid, val):
@@ -35,3 +39,24 @@ class Node:
 
     def is_terminal(self):
         return self.is_win(self.val) or self.is_win(self.oppVal) or self.grid.count(None) == 0
+
+    def get_neighbors(self):
+        if self.position == 0:
+            return [1, 3]
+        elif self.position == 1:
+            return [0, 2, 4]
+        elif self.position == 2:
+            return [2, 5]
+        elif self.position == 3:
+            return [0, 4, 6]
+        elif self.position == 4:
+            return [1, 3, 5, 7]
+        elif self.position == 5:
+            return [2, 4, 8]
+        elif self.position == 6:
+            return [3, 7]
+        elif self.position == 7:
+            return [4, 6, 8]
+        elif self.position == 8:
+            return [5, 7]
+
