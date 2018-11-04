@@ -6,13 +6,15 @@ class Node:
         self.val = val
         self.oppVal = oppVal
 
-    def get_utility(self):
+    def get_position(self):
+        return self.position
 
+    def get_utility(self):
         util = 0
 
         test_grid = self.grid.copy()
         test_grid[self.position] = self.val
-        if self.is_win(test_grid):
+        if self.is_win(test_grid, self.val):
             util = float('inf')
             return util
 

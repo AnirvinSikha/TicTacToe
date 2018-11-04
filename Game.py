@@ -48,7 +48,7 @@ class Game:
             opponent = self.p1
         successors = []
         for i in range(len(self.grid)):
-            if i is None:
+            if self.grid[i] is None:
                 n = Node(i, self.grid, current.val, opponent.val)
                 successors.append(n)
         return successors
@@ -59,8 +59,10 @@ def oneVone():
     p2 = Player(b, 'o')
     g = Game(p1, p2, b)
     while not g.finished():
+        g.turn = p1
         p1.play()
         if not g.finished():
+            g.turn = p2
             p2.play()
     if g.win(p1):
         print("Player 1 is the winner!")
@@ -68,3 +70,24 @@ def oneVone():
         print("Player 2 is the winner!")
     if g.tie():
         print("It's a tie!")
+
+def aiVone():
+    b = Board()
+    p1 = Player(b, 'x')
+    p2 = Player(b, 'o')
+    g = Game(p1, p2, b)
+    while not g.finished():
+        g.turn = p1
+        p1.AIplay(g.getSuccessors())
+        if not g.finished():
+            g.turn = p2
+            p2.play()
+
+    if g.win(p1):
+        print("Player 1 is the winner!")
+    if g.win(p2):
+        print("Player 2 is the winner!")
+    if g.tie():
+        print("It's a tie!")
+    g.board.visualize()
+aiVone()
